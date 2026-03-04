@@ -2,141 +2,148 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <!-- ERROR intencional: falta viewport para responsive real -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <!-- CORREGIDO: Se añade viewport para responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Práctica 2 — Auditoría Bootstrap</title>
+  <title>Práctica 2 — Auditoría Bootstrap (Corregido)</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- CSS propio -->
+  <!-- CSS propio (mínimo, solo para scroll behavior) -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- NAVBAR (con errores intencionales) -->
+  <!-- NAVBAR CORREGIDO: Profesional y funcional -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- ERROR intencional: falta container (o container-fluid) -->
-    <a class="navbar-brand" href="#">Mi sitio</a>
+    <div class="container">
+      <!-- CORREGIDO: Evita href="#" y navega a una sección real -->
+      <a class="navbar-brand" href="#hero">Mi sitio</a>
 
-    <!-- ERROR intencional: el toggler apunta a un id que NO existe -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- CORREGIDO: data-bs-target ahora apunta al ID correcto -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Mostrar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- ERROR intencional: este id NO coincide con data-bs-target -->
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
-        <!-- ERROR intencional: href="#" sin funcionalidad -->
-        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Proyectos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-      </ul>
-    </div>
+      <!-- CORREGIDO: Este ID ahora es 'navbarNav' y coincide con el botón -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- CORREGIDO: href ahora apunta a secciones reales de la página -->
+          <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div> <!-- CORREGIDO: Cierre del container -->
   </nav>
 
-  <!-- HERO (poco spacing, jerarquía débil a propósito) -->
-  <section class="bg-light">
-    <div>
-      <h1>Bienvenido</h1>
-      <p>Esta landing tiene errores. Tu trabajo es auditarlos y corregirlos.</p>
-
-      <!-- Botón sin acción real -->
-      <a href="#" class="btn btn-primary">Agendar</a>
+  <!-- HERO CORREGIDO: Con espaciado y llamado a la acción claro -->
+  <section id="hero" class="bg-light py-5"> 
+    <div class="container text-center"> 
+      <h1 class="display-4">Bienvenido</h1> 
+      <p class="lead">Esta landing ahora es profesional y totalmente funcional gracias a Bootstrap.</p>
+      <a href="#contacto" class="btn btn-primary btn-lg">Agendar reunión</a> 
     </div>
   </section>
 
-  <!-- SOBRE MI / PERFIL (GRID mal distribuido 5 + 8) -->
-  <section id="sobre-mi">
+  <!-- SOBRE MI CORREGIDO: Grid coherente y espaciado profesional -->
+  <section id="sobre-mi" class="py-5">
     <div class="container">
-      <h2>Sobre mí</h2>
-
-      <div class="row">
-        <!-- ERROR intencional: 5 + 8 = 13 (rompe el sistema de 12) -->
-        <div class="col-md-5">
-          <!-- ERROR intencional: imagen sin img-fluid -->
-          <img src="https://via.placeholder.com/260" alt="Foto de perfil" class="rounded-circle">
+      <h2 class="text-center mb-5">Sobre mí</h2> 
+      <div class="row align-items-center g-4"> 
+        <!-- CORREGIDO: Columnas corregidas a 5 + 7 = 12 -->
+        <div class="col-12 col-md-5 text-center text-md-start"> 
+          <!-- CORREGIDO: Añadido img-fluid para hacerla responsive y max-width para controlar tamaño -->
+          <img src="foto.jpeg" alt="Foto de perfil" class="rounded-circle img-fluid" style="max-width: 260px;">
         </div>
 
-        <div class="col-md-8">
-          <p>
-            Texto descriptivo. Aquí debe verse una jerarquía visual clara:
-            imagen → título → texto → acción.
+        <div class="col-12 col-md-7"> 
+          <p class="lead"> 
+            Se logro la corrección de la landing page utilizando Bootstrap, logrando una apariencia profesional y funcional. Se corrigieron los enlaces para que sean funcionales, se mejoró la estructura del grid para que sea coherente y se añadió espaciado adecuado entre los elementos. Además, se aseguraron de que las imágenes sean responsive y se mejoró la jerarquía visual con títulos y botones más claros.
           </p>
-
-          <!-- Link sin objetivo -->
-          <a href="#" class="btn btn-outline-dark">Ver CV</a>
+          <!-- CORREGIDO: Botón de acción con navegación real -->
+          <a href="#contacto" class="btn btn-secondary mt-3">Contactarme</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROYECTOS (cards sin h-100, sin jerarquía, sin grid responsive) -->
-  <section id="proyectos" class="bg-light">
+  <!-- PROYECTOS CORREGIDOS: Cards consistentes, con sombra y misma altura -->
+  <section id="proyectos" class="bg-light py-5">
     <div class="container">
-      <h2>Proyectos</h2>
+      <h2 class="text-center mb-5">Proyectos</h2> 
 
-      <div class="row">
-        <!-- ERROR intencional: solo col-md-4 (sin estrategia col-12 / col-lg-*) -->
-        <div class="col-md-4">
-          <div class="card">
-            <!-- ERROR intencional: imagen sin clase responsive -->
-            <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Proyecto 1">
-            <div class="card-body">
+      <!-- CORREGIDO: Añadido g-4 para espaciado entre cards -->
+      <div class="row g-4">
+        <!-- CORREGIDO: Estrategia Mobile First: col-12 en móvil, col-md-6 y col-lg-4 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <!-- CORREGIDO: h-100 para misma altura, shadow-sm para sombra ligera -->
+          <div class="card h-100 shadow-sm">
+            <!-- CORREGIDO: card-img-top es suficiente, pero aseguramos que la imagen se comporte -->
+            <img src="https://tse4.mm.bing.net/th/id/OIP.8gYviUvkun9e3uvc3IuVKAHaFL?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top img-fluid" alt="Proyecto 1">
+            <div class="card-body d-flex flex-column"> 
               <h5 class="card-title">Proyecto 1</h5>
-              <p class="card-text">Descripción corta.</p>
-              <!-- ERROR intencional: href sin funcionalidad -->
-              <a href="#" class="btn btn-primary">Ver</a>
+              <p class="card-text">Descripción más detallada del proyecto. Verás que todas las cards tienen la misma altura gracias a `h-100`.</p>
+              <!-- CORREGIDO: Link funcional (podría abrir un modal o ir a otra página) -->
+              <a href="#contacto" class="btn btn-primary mt-auto">Ver proyecto</a> 
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Proyecto 2">
-            <div class="card-body">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.BJRWPemHfI-hcJgGxX7OiAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top img-fluid" alt="Proyecto 2">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">Proyecto 2</h5>
-              <p class="card-text">Descripción corta.</p>
-              <a href="#" class="btn btn-primary">Ver</a>
+              <p class="card-text">Se logro la implementación de funcionalidades clave y una interfaz amigable.</p>
+              <a href="#contacto" class="btn btn-primary mt-auto">Ver proyecto</a>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Proyecto 3">
-            <div class="card-body">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://cultura-informatica.com/wp-content/uploads/2022/06/Lenguaje-de-programacion-C.png" class="card-img-top img-fluid" alt="Proyecto 3">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">Proyecto 3</h5>
-              <p class="card-text">Descripción corta.</p>
-              <a href="#" class="btn btn-primary">Ver</a>
+              <p class="card-text">Otra descripción. El gutter `g-4` da un espaciado limpio entre columnas.</p>
+              <a href="#contacto" class="btn btn-primary mt-auto">Ver proyecto</a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- CONTACTO (id existe, pero navbar NO navega aquí por href #) -->
-  <section id="contacto">
+  <!-- CONTACTO CORREGIDO: Formulario funcional (en acción) -->
+  <section id="contacto" class="py-5">
     <div class="container">
-      <h2>Contacto</h2>
+      <h2 class="text-center mb-5">Contacto</h2>
 
-      <form>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Nombre">
+      <!-- CORREGIDO: Formulario con acción real (aunque sea a la misma página) y método POST -->
+      <form action="#" method="post" class="row g-3 justify-content-center"> 
+        <div class="col-md-6">
+          <label for="nombre" class="form-label">Nombre</label> 
+          <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
         </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" placeholder="Correo">
+        <div class="col-md-6">
+          <label for="correo" class="form-label">Correo electrónico</label> 
+          <input type="email" class="form-control" id="correo" placeholder="tu@email.com" required>
         </div>
-        <button class="btn btn-dark" type="submit">Enviar</button>
+        <div class="col-12 text-center">
+          <button class="btn btn-dark btn-lg" type="submit">Enviar mensaje</button> 
+        </div>
       </form>
     </div>
   </section>
 
-  <footer class="bg-dark text-white text-center">
-    <p>© 2026</p>
+  <!-- FOOTER CORREGIDO: Añadido container y padding -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container"> 
+      <p class="mb-0">© 2026 Mi Sitio Profesional. Todos los derechos reservados.</p> 
+    </div>
   </footer>
 
   <!-- Bootstrap JS (OK) -->

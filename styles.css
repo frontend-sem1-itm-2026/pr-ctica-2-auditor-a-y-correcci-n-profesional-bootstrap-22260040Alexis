@@ -2,5 +2,26 @@
    No uses CSS para “arreglar” lo que Bootstrap resuelve con clases. */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Fuente legible y común */
+}
+
+html {
+  scroll-behavior: smooth; 
+}
+
+/* Pequeño ajuste para que las imágenes de las cards no se deformen */
+.card-img-top {
+  object-fit: contain; 
+  height: 200px; 
+  background-color: #f8f9fa;
+}
+
+#sobre-mi img {
+  max-width: 200px; /* Tamaño máximo un poco más pequeño en móviles */
+}
+
+@media (min-width: 768px) {
+  #sobre-mi img {
+    max-width: 260px; /* Tamaño original en escritorio */
+  }
 }
